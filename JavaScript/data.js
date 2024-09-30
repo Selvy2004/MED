@@ -3,7 +3,7 @@ export const data = [
   {
     title: 'Medico Scrub with Half-Sleeves',
     id: 'half-sleeve',
-    imageView: ['../../images/half-sleeve.jpeg'],
+    imageView: 'images/half-sleeve.jpeg',
     subImages: [],
     price: '450',
     oldPrice: '550',
@@ -15,7 +15,7 @@ export const data = [
   {
     title: 'Medico Scrub with Sleeve',
     id: 'sleeve',
-    imageView: ['../../images/sleeve.jpeg'],
+    imageView: 'images/sleeve.jpeg',
     subImages: [],
     price: '450',
     oldPrice: '550',
@@ -27,7 +27,7 @@ export const data = [
   {
     title: 'Medico Scrub Half Tonic',
     id: 'half-tonic',
-    imageView: ['../../images/half-tonic.jpeg'],
+    imageView: 'images/half-tonic.jpeg',
     subImages: [],
     price: '500',
     oldPrice: '600',
@@ -39,7 +39,7 @@ export const data = [
   {
     title: 'Medico Scrub Tonic',
     id: 'tonic',
-    imageView: ['../../images/tonic.jpeg'],
+    imageView: 'images/tonic.jpeg',
     subImages: [],
     price: '550',
     oldPrice: '650',
@@ -51,7 +51,7 @@ export const data = [
   {
     title: 'Medico Scrub Skirt',
     id: 'skirt',
-    imageView: '../../images/skirt.jpeg',
+    imageView: 'images/skirt.jpeg',
     subImages: [],
     price: '500',
     oldPrice: '600',
@@ -63,7 +63,7 @@ export const data = [
   {
     title: 'Medico Scrub Dress',
     id: 'dress',
-    imageView: '../../images/dress.jpeg',
+    imageView: 'images/dress.jpeg',
     subImages: [],
     price: '550',
     oldPrice: '650',
