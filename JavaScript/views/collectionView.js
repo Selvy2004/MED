@@ -12,7 +12,7 @@ class CollectionView {
 				<div class="collec-img-container">
 					<img
 						class="collec-img"
-		  			src="/images/dress.jpeg"
+		  			src="images/dress.jpeg""
 						alt="${collection.title}"
 					/>
 				</div>
