@@ -59,26 +59,24 @@ class CollectionView {
 
       overlay.classList.remove('hidden');
       oneCollectView.classList.remove('hidden');
+
+      // Calculate the position for centering the modal
+      const scrollY = window.scrollY || window.pageYOffset; // Get the current vertical scroll position
+      const windowHeight = window.innerHeight; // Get the height of the window
+      const modalHeight = oneCollectView.offsetHeight; // Get the height of the modal
+
+      // Set the position of the one-collect-view
+      oneCollectView.style.position = 'absolute';
+      oneCollectView.style.top = `${scrollY + (windowHeight - modalHeight) / 2}px`; // Center vertically
+      oneCollectView.style.left = `50%`; // Center horizontally
+      oneCollectView.style.transform = 'translateX(-50%)';
+
+      oneCollectView.scrollIntoView({ behavior: 'smooth', block: 'start' });
       handler();
 
     });
 
-    const closeCart = function (e) {
-      e.preventDefault();
-      const oneCollectView = document.querySelector('.one-collect-view');
-
-      if (!oneCollectView) return;
-
-      oneCollectView.innerHTML = '';
-      overlay.classList.add('hidden');
-      oneCollectView.classList.add('hidden');
-
-      window.history.pushState('', document.title, window.location.pathname);
-
-    }
-    overlay.addEventListener('click', closeCart);
-    closeIcon?.addEventListener('click', closeCart);
-
+    // document.querySelector('.close-icon').addEventListener('click', closeCart);
   }
 
 }

@@ -1,0 +1,21 @@
+/* Media Query */
+
+/* 1100px */
+@media (max-width: 72.5rem) {
+	.collec-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 48.7rem) {
+	.collec-container {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+@media (max-width: 23.9rem) {
+	.one-collect-view {
+		position: absolute;
+		/* max-width: 50rem; */
+		padding: 1.6rem;
+	}
+}

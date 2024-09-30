@@ -7,30 +7,17 @@ class PhotosView {
 		this._data = data;
 		this._colors = colors;
 		this._parentElement.insertAdjacentHTML('afterbegin', this.generateMarkup());
-		this._currPhoto = document.querySelector('.viewed-img .main-image');
+		this._currPhoto = document.querySelector('.collec-img-midle');
 	}
 
 	generateMarkup() {
-		const markup = `      
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="close-icon"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M6 18 18 6M6 6l12 12"
-				/>
-			</svg>
+		const markup = `
+		<button class="close-btn">X</button>      
 
 			<div class="one-collect-view-container">
 				<div class="collec-img-container">
 					<img
-						class="collec-img"
+						class="collec-img collec-img-midle"
 						src="${this._data.imageView}"
 						alt="${this._data.title}"
 					/>
@@ -58,7 +45,7 @@ class PhotosView {
 						</div>
 					</div>
 					<div class="colors">
-						 ${this._colors.map(color => `<span style="background-color: ${color}" class="color-span"></span>`).join('')}
+						 ${this._data.colors.length === 0 ? this._colors.map(color => this.colorsOptions(color)).join('') : this._data.colors.map((color, i) => this.colorsOptions(color, i)).join('')}
 					</div>
 					<h3 class="Contact-with-us-title">Contact with us</h3>
 					<div class="contact">
@@ -106,15 +93,8 @@ class PhotosView {
     `;
 		return markup;
 	}
-	photosOptions(sub, i) {
-		const markup = `
-        <img
-          src="${sub}"
-          class="sub-image ${i === 0 ? 'active-photo' : ''} "
-          alt = "${sub}"
-          status="${i === 1 ? 'active' : 'notactive'}"
-        />
-    `;
+	colorsOptions(color, i) {
+		const markup = `<span style="background-color: ${color}" class="color-span ${i === 0 ? 'active-color' : ''}"></span>`;
 		return markup;
 	}
 
@@ -122,44 +102,42 @@ class PhotosView {
 		// Click on Sub Photos
 		document.querySelector('body').addEventListener('click', (e) => {
 			e.preventDefault();
-			const subPhoto = e.target.closest('.sub-image');
-			if (!subPhoto) return;
-			this._currPhoto.setAttribute('src', subPhoto.getAttribute('src').replace('-thumbnail', ''));
+			const color = e.target.closest('.color-span');
+			if (!color) return;
+
+			const coloredPhotoArr = this._data.subImages.find(array => array[1].toLowerCase() === this.rgbToHex(color.style.backgroundColor).toLowerCase());
+
+			this._currPhoto.setAttribute('src', coloredPhotoArr[0]);
 			// Activation
-			document.querySelectorAll('.sub-image').forEach(img => {
-				img.classList.remove('active-photo');
-				img.setAttribute('status', 'notactive');
+			document.querySelectorAll('.color-span').forEach(color => {
+				color.classList.remove('active-color');
 			});
-			subPhoto.classList.add('active-photo');
-			subPhoto.setAttribute('status', 'active');
-			console.log('clicked');
+			color.classList.add('active-color');
+			color.setAttribute('status', 'active');
 		});
 
-		// Click on current Viewed Photo
-		this._parentElement.addEventListener('click', (e) => {
+
+		const overlay = document.querySelector('.overlay');
+
+		document.querySelector('body').addEventListener('click', function (e) {
 			e.preventDefault();
-			const viewedPhoto = e.target.closest('.viewed-img');
-			if (!viewedPhoto) return;
-			// const middleSide = document.getElementsByClassName('left-side-contant')[0];
-			const clone = document.getElementsByClassName('left-side-contant')[0].cloneNode(true);
-			clone.classList.add('centered-photo');
-			document.body.appendChild(clone);
-			setTimeout(() => {
-				clone.style.opacity = '1';
-			}, 10);
-			console.log(clone);
+			const oneCollectView = document.querySelector('.one-collect-view');
+			const closeBtn = e.target.closest('.close-btn');
+			if (!oneCollectView) return;
+			if (!closeBtn && e.target !== overlay) return;
 
-			// console.log(middleSide);
-			// this.rander(this._data);
+			oneCollectView.innerHTML = '';
+			overlay.classList.add('hidden');
+			oneCollectView.classList.add('hidden');
 
-		});
-		// Click on right and left arrow
+			window.history.pushState('', document.title, window.location.pathname);
 
-		// Right and Left Scroll animation
-
-		// Click on overlay and X
-
+		})
 	}
 
+	rgbToHex(rgb) {
+		const rgbValues = rgb.match(/\d+/g).map(Number);
+		return '#' + rgbValues.map(x => x.toString(16).padStart(2, '0')).join('');
+	}
 }
 export default new PhotosView();
