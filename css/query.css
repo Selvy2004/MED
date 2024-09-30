@@ -2,6 +2,23 @@
 
 /* 1100px */
 @media (max-width: 72.5rem) {
+	.right-navs-list {
+		padding: 3rem 8rem 50rem 8rem;
+		position: absolute;
+		transform: translate(10%, 31%);
+		right: 0;
+		flex-direction: column;
+		gap: 8rem;
+		margin-top: 30rem;
+		/* background-color: var(--white--); */
+		/* box-shadow: 0 2.4rem 4.8rem var(--shadow-nav-bar--); */
+		border-bottom-right-radius: 1.2rem;
+		border-bottom-left-radius: 1.2rem;
+		z-index: 100;
+		align-items: flex-end;
+		background-color: var(--nav-color--);
+		transition: all 0.3s ease-in;
+	}
 	.collec-container {
 		grid-template-columns: repeat(2, 1fr);
 	}

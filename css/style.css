@@ -70,11 +70,30 @@
 :root {
 	--main-light-color-: #fdf2e9;
 	--main-light-gray-color-: #ebebeb;
+	--nav-color--: #dccbe6;
+	--light-gray: #777;
 	--light-purpul--: #dccbe6;
 	--white--: #fff;
 	--black--: #000;
 	--black-with-obacity--: rgba(0, 0, 0, 0.75);
 	--very-dark-gray--: #333;
+	--linear-background--: linear-gradient(
+		to top left,
+		var(--main-light-gray-color-),
+		var(--light-purpul--)
+	);
+}
+body.dark-mode {
+	--main-light-color-: #121b22;
+	--light-gray: #e6e6e6;
+	--nav-color--: #424242;
+
+	--main-light-gray-color-: #ebebeb;
+	--light-purpul--: #dccbe6;
+	--white--: #424242;
+	--black--: #000;
+	--black-with-obacity--: rgba(0, 0, 0, 0.75);
+	--very-dark-gray--: #fff;
 	--linear-background--: linear-gradient(
 		to top left,
 		var(--main-light-gray-color-),
@@ -138,6 +157,15 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	font-size: 2.4rem;
+	transition: all 0.3s ease-in;
+}
+.right-navs-list {
+	list-style: none;
+	display: flex;
+	gap: 2.4rem;
+	align-items: center;
+	transition: all 0.3s ease-in;
 }
 
 .logo {
@@ -172,7 +200,7 @@ header {
 
 .one-collec-container {
 	background-color: var(--main-light-gray-color-);
-	background-color: #fff;
+	background-color: var(--white--);
 	border-radius: 1.2rem;
 	box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
 	transition: all 0.4s;
@@ -224,7 +252,7 @@ header {
 .old-price {
 	font-size: 1.8rem;
 	font-weight: 700;
-	color: #777;
+	color: var(--light-gray);
 }
 
 .colors {
@@ -315,4 +343,28 @@ header {
 
 .active-color {
 	transform: translateY(-0.6rem);
+}
+
+.moon-btn {
+	background-color: inherit;
+	border: none;
+	outline: none;
+	width: 6.4rem;
+}
+.moon-icon {
+	stroke: #f1c302;
+	fill: var(--main-light-color-);
+	transition: all 0.3s;
+}
+.moon-fill {
+	fill: #f1c302;
+	stroke: #f1c302;
+}
+
+.open-menu,
+.close-menu {
+	width: 4.8rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	color: #f1c302;
 }
