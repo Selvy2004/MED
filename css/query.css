@@ -28,6 +28,9 @@
 	.collec-container {
 		grid-template-columns: repeat(1, 1fr);
 	}
+	.navigation {
+		margin: 2.4rem 0.6rem 0rem 0.6rem;
+	}
 }
 @media (max-width: 23.9rem) {
 	.one-collect-view {
