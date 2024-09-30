@@ -13,7 +13,7 @@ export const data = [
   },
   // ITEM: Sleeve
   {
-    title: 'Medico Scrub with Sleeve',
+    title: 'Medico Scrub with Sleeves',
     id: 'sleeve',
     imageView: 'images/sleeve.jpeg',
     subImages: [],
